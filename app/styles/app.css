@@ -1,3 +1,11 @@
 html {
   background: #ccc;
 } 
+
+.top-nav-bar {
+	color: white;
+	text-align: center;
+	font-family: Arial;
+	background: #336699;
+	box-shadow: 1px 1px 10px #333;
+}
