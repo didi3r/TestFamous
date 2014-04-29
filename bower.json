@@ -1,0 +1,32 @@
+{
+  "name": "testfamous",
+  "description": "Testing Famous Framework.",
+  "version": "0.1.0",
+  "homepage": "https://github.com/didi3r/testfamous",
+  "authors": [{
+    "name": "didi3r",
+    "url": "http://github.com/didi3r/"
+  }],
+  "main": "app/index.html",
+  "moduleType": [
+    "amd"
+  ],
+  "keywords": [
+    "famo.us"
+  ],
+  "license": "ISC",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "src/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "requirejs": "~2.1.11",
+    "almond": "~0.2.9",
+    "famous-polyfills": "git+https://github.com/Famous/polyfills.git#0.1.1",
+    "famous": "git+https://github.com/Famous/famous.git#flat0.1.1"
+  }
+}
