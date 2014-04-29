@@ -1,11 +1,39 @@
 html {
-  background: #ccc;
+ 	background: #ccc;
+	font-family: Arial;
 } 
+
+@font-face {
+  font-family: "FontAwesome";
+  src: url('../content/fonts/fontawesome-webfont.eot');
+  src: url('../content/fonts/fontawesome-webfont.eot?#iefix') format('eot'), url('../content/fonts/fontawesome-webfont.woff') format('woff'), url('../content/fonts/fontawesome-webfont.ttf') format('truetype'), url('../content/fonts/fontawesome-webfont.svg#FontAwesome')    format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.icon {
+	font-family: FontAwesome;
+}
+
+.icon.red {
+	color: #FA5C4F;
+}
 
 .top-nav-bar {
 	color: white;
 	text-align: center;
-	font-family: Arial;
-	background: #336699;
-	box-shadow: 1px 1px 10px #333;
+	background: #111;
+	box-shadow: 1px 0 10px #000;
+}
+
+.content {
+	background: #333;
+}
+
+.listview-item {
+	color: #EEE;
+	background: #4D5966;
+	border-bottom: 1px solid #3F4751;
+	line-height: 50px;
+	padding: 0 30px;
 }
