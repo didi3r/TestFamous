@@ -37,3 +37,17 @@ html {
 	line-height: 50px;
 	padding: 0 30px;
 }
+
+.sideview {
+	color: white;
+	background: #111;
+}
+
+.sideview-button-box {
+	color: white;
+	background: #FA5C4F;
+}
+
+.sideview-button {
+	color: white;
+}

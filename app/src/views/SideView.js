@@ -19,6 +19,11 @@ define(function(require, exports, module) {
             transform: Transform.translate(-this.params.width, 0, 0)
         });
 
+        this.background = new Surface({
+            size: [undefined, undefined],
+            classes: ['sideview']
+        });
+
         this.layout = new GridLayout({
             dimensions: [1, this.params.items.length]
         });
@@ -28,7 +33,11 @@ define(function(require, exports, module) {
 
         createButtons.call(this);
 
-        this._add(new Modifier({size : [this.params.width, undefined]})).add(new Modifier({origin : [1,0]})).add(this.slide).add(this.layout);
+        this._add(new Modifier({size : [this.params.width, undefined]}))
+            .add(new Modifier({origin : [1,0]}))
+            .add(this.slide)
+            // .add(this.background)
+            .add(this.layout);
     }
 
     SideView.prototype = Object.create(View.prototype);
@@ -43,60 +52,46 @@ define(function(require, exports, module) {
         this.slide.setTransform(Transform.translate(-this.params.width, 0, 0), { duration: 500, curve: 'easeOut' });
     };
 
-    var categories = [
-        {
-            name: 'all',
-            icon: '&#xf01c;'
-        },
-        {
-            name: 'home',
-            icon: '&#xf015;'
-        },
-        {
-            name: 'work',
-            icon: '&#xf0b1;'
-        },
-        {
-            name: 'friends',
-            icon: '&#xf0c0;'
-        },
-        {
-            name: 'shopping',
-            icon: '&#xf07a;'
-        },
-        {
-            name: 'settings',
-            icon: '&#xf013;'
-        }
-    ];
 
     var createButtons = function() {
+        var categories = [
+            {
+                name: 'Home',
+                icon: '&#xf0c2'
+            }
+        ];
+
         for(var i = 0; i < categories.length; i++) {
-            var buttonView = new View();
+            var button = new View();
 
             var backingSurface = new Surface({
                 size: [undefined, undefined],
-                classes: ["fa", "side-view-button", categories[i]["name"]]
+                classes: ["icon", "sideview-button-box", categories[i]["name"]]
             });
 
             var iconSurface = new Surface({
                 size: [undefined, undefined],
                 content: categories[i]['icon'],
-                classes: ["fa", "side-view-button", categories[i]["name"]],
+                classes: ["icon", "sideview-button", categories[i]["name"]],
                 properties: {
                     lineHeight: '60px'
                 }
             });
 
             var iconMod = new Modifier({
-                transform: Transform.translate(0, 0, 1),
-                size: [100, 60],
+                transform: Transform.inFront,
+                size: [400, 60],
                 origin: [.5, .5]
             });
 
-            buttonView.add(backingSurface);
-            buttonView.add(iconMod).add(iconSurface);
-            this.buttons.push(buttonView);
+
+            var backMod = new Modifier({
+                transform: Transform.behind
+            });
+
+            button.add(backMod).add(backingSurface);
+            button.add(iconMod).add(iconSurface);
+            this.buttons.push(button);
         }
     };
 
