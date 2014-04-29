@@ -5,6 +5,7 @@ define(function(require, exports, module) {
     var Engine = require('famous/core/Engine');
     var ImageSurface = require('famous/surfaces/ImageSurface');
     var StateModifier = require('famous/modifiers/StateModifier');
+    var Scrollview = require('famous/views/Scrollview');
 
     // create the main context
     var mainContext = Engine.createContext();
@@ -21,3 +22,4 @@ define(function(require, exports, module) {
 
     mainContext.add(logoModifier).add(logo);
 });
+
