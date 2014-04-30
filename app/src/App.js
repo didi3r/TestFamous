@@ -11,8 +11,13 @@ define(function(require, exports, module) {
     var SideView = require('views/SideView');
     var ListView = require('views/ListView');
 
+    // Constants
+    var LATERAL_MENU_WIDTH = 300;
+    var LATERAL_MENU_ANIMATION_DURATION = 500;
+    
     function App() {
         View.apply(this, arguments);
+
 
         // Create the mainTransforms for shifting the entire view over on menu open
         this.mainTransform = new Modifier({
@@ -25,7 +30,9 @@ define(function(require, exports, module) {
         }.bind(this));
 
         // Create Lateral Menu
-        this.sideView = new SideView();
+        this.sideView = new SideView({
+            width: LATERAL_MENU_WIDTH
+        });
         
         // Main Layout
         this.layout = new HeaderFooterLayout({
@@ -57,11 +64,11 @@ define(function(require, exports, module) {
 
     App.prototype.menuToggle = function() {
         if (!this.sideView.open) {
-            this.mainTransitionable.set(300, { duration: 500, curve: 'easeOut' });
+            this.mainTransitionable.set(LATERAL_MENU_WIDTH, { duration: LATERAL_MENU_ANIMATION_DURATION, curve: 'easeOut' });
             // this.sideView.flipOut();
         }
         else {
-            this.mainTransitionable.set(0, { duration: 500, curve: 'easeOut' });
+            this.mainTransitionable.set(0, { duration: LATERAL_MENU_ANIMATION_DURATION, curve: 'easeOut' });
             // this.sideView.flipIn();
         }
         this.sideView.open = !this.sideView.open;
