@@ -1,6 +1,6 @@
 html {
  	background: #ccc;
-	font-family: Arial;
+	font-family: 'Roboto', sans-serif;
 } 
 
 @font-face {
@@ -17,6 +17,10 @@ html {
 
 .icon.red {
 	color: #FA5C4F;
+}
+
+.icon.green {
+	color: #00B5A9;
 }
 
 .top-nav-bar {
@@ -44,6 +48,15 @@ html {
 }
 
 .sideview-menu-item {
+	/*background: #FA5C4F;*/
+}
+
+.sideview-menu-item-text {
 	color: white;
-	background: #FA5C4F;
+	font-size: 1em;
+	text-transform: uppercase;
+}
+
+.sideview-menu-item-text .icon {
+	font-size: 1.3em;
 }

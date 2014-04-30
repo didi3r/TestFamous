@@ -33,7 +33,8 @@ define(function(require, exports, module) {
         this.menuLayout.sequenceFrom(this.menuItems);
 
         createButtons.call(this);
-        this.menuHeight = calculateHeight.call(this);
+        // this.menuHeight = calculateHeight.call(this);
+        this.menuHeight = 180;
         
         this.menuView = new View();
         this.menuView.add(this.background);
@@ -52,50 +53,55 @@ define(function(require, exports, module) {
     SideView.prototype = Object.create(View.prototype);
     SideView.prototype.constructor = SideView;
 
-
-    SideView.prototype.flipOut = function() {
-        this.slide.setTransform(Transform.translate(-this.params.width, 0, 0), { duration: 500, curve: 'easeOut' });
-    }
-
-    SideView.prototype.flipIn = function() {
-        this.slide.setTransform(Transform.translate(-this.params.width, 0, 0), { duration: 500, curve: 'easeOut' });
-    }
-
-
     var createButtons = function() {
         var categories = [
             {
                 name: 'Home',
-                icon: '&#xf0c2'
+                icon: '&#xf0c2',
+                color: '#00B4A9'
             },
             {
                 name: 'Donate',
-                icon: '&#xf0c2'
+                icon: '&#xf004',
+                color: '#77BF6E'
             },
             {
                 name: 'About',
-                icon: '&#xf0c2'
+                icon: '&#xf059',
+                color: '#DADD89'
             }
         ];
 
         for(var i = 0; i < categories.length; i++) {
-            var button = new View();
+            var itemView = new View();
 
-            var box = new Surface({
-                size: [undefined, 60],
-                content: categories[i]['icon'] + ' ' + categories[i]["name"],
-                classes: ["icon", "sideview-menu-item", categories[i]["name"]],
+            var itemBox = new Surface({
+                size: [undefined, 40],
+                classes: ["sideview-menu-item"],
                 properties: {
-                    lineHeight: '60px'
+                    background: categories[i]['color']
                 }
             });
 
-            button.add(new Modifier({
-                origin: [0, 0],
+            var itemText = new Surface({
+                size: [true, true],
+                classes: ["sideview-menu-item-text"],
+                content: '<span class="icon">' + categories[i]['icon'] + '</span> ' + categories[i]["name"],
+                properties: {
+                    lineHeight: '40px'
+                }
+            });
+            
+            var nodeText = new RenderNode(new Modifier({
+                origin: [0.05, 0],
                 transform: Transform.inFront
-            })).add(box);
+            }));
+            nodeText.add(itemText);
 
-            this.menuItems.push(button);
+            itemView.add(itemBox);
+            itemView.add(nodeText);
+
+            this.menuItems.push(itemView);
         }
     }
 

@@ -3,6 +3,7 @@ define(function(require, exports, module) {
     var Modifier           = require('famous/core/Modifier');
     var Transform          = require('famous/core/Transform');
     var RenderNode         = require('famous/core/RenderNode');
+    var Easing             = require('famous/transitions/Easing');
     var Transitionable     = require('famous/transitions/Transitionable');
     var HeaderFooterLayout = require('famous/views/HeaderFooterLayout');
 
@@ -13,7 +14,7 @@ define(function(require, exports, module) {
 
     // Constants
     var LATERAL_MENU_WIDTH = 300;
-    var LATERAL_MENU_ANIMATION_DURATION = 500;
+    var LATERAL_MENU_ANIMATION_DURATION = 300;
     
     function App() {
         View.apply(this, arguments);
@@ -64,11 +65,11 @@ define(function(require, exports, module) {
 
     App.prototype.menuToggle = function() {
         if (!this.sideView.open) {
-            this.mainTransitionable.set(LATERAL_MENU_WIDTH, { duration: LATERAL_MENU_ANIMATION_DURATION, curve: 'easeOut' });
+            this.mainTransitionable.set(LATERAL_MENU_WIDTH, { duration: LATERAL_MENU_ANIMATION_DURATION, curve: Easing.outBack });
             // this.sideView.flipOut();
         }
         else {
-            this.mainTransitionable.set(0, { duration: LATERAL_MENU_ANIMATION_DURATION, curve: 'easeOut' });
+            this.mainTransitionable.set(0, { duration: LATERAL_MENU_ANIMATION_DURATION, curve: Easing.outBack });
             // this.sideView.flipIn();
         }
         this.sideView.open = !this.sideView.open;

@@ -26,7 +26,7 @@ define(function(require, exports, module) {
         this.menuIcon = new Surface({
             size: [50, 50],
             content: "&#xf0c9",
-            classes: ['icon', 'red'],
+            classes: ['icon', 'green'],
             properties: {
                 fontSize: '30px'
             }
