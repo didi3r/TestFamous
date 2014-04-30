@@ -17,7 +17,7 @@ define(function(require, exports, module) {
 
         this.sideViewModifier = new Modifier({
             size: [this.params.width, undefined ],
-            transform: Transform.translate(-this.params.width, 0, 0)
+            transform: Transform.translate(-this.params.width + 2, 0, 0)
         });
 
         this.background = new Surface({
@@ -27,7 +27,6 @@ define(function(require, exports, module) {
 
         this.title = new Surface({
             size: [undefined, 70],
-            origin: [0.1, 0],
             content: 'Menu',
             classes: ['sideview-title']
         });
@@ -113,15 +112,15 @@ define(function(require, exports, module) {
         }
     }
 
-    var calculateHeight = function() {
-        var height = 0;
-        for (var i = 0; i < this.menuItems.length; i++) {
-            height += this.menuItems[i].getSize()[1];
-        }
+    // var calculateHeight = function() {
+    //     var height = 0;
+    //     for (var i = 0; i < this.menuItems.length; i++) {
+    //         height += this.menuItems[i].getSize()[1];
+    //     }
 
-        console.log(height);
-        return height;
-    }
+    //     console.log(height);
+    //     return height;
+    // }
 
     module.exports = SideView;
 });

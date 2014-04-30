@@ -47,6 +47,9 @@ define(function(require, exports, module) {
         this._eventInput.on('menuToggle', this.menuToggle.bind(this))
 
         this.list = new ListView();
+        this.list.pipe(this._eventInput);
+        this._eventInput.on('swipe', this.swipeListItem.bind(this))
+
         this.list.setContent([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]);
 
         this.layout.content.add(this.list);
@@ -74,6 +77,10 @@ define(function(require, exports, module) {
         }
         this.sideView.open = !this.sideView.open;
         console.log('Menu Clicked');
+    };
+
+    App.prototype.swipeListItem = function() {
+        console.log('Item Swiped!');
     };
 
     module.exports = App;

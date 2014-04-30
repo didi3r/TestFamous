@@ -1,5 +1,5 @@
 html {
- 	background: #ccc;
+ 	background: #AAA;
 	font-family: 'Roboto', sans-serif;
 } 
 
@@ -38,12 +38,16 @@ html {
 	color: #EEE;
 	background: #4D5966;
 	border-bottom: 1px solid #3F4751;
-	line-height: 50px;
+	line-height: 60px;
 	padding: 0 30px;
 }
 
 .sideview {
 	background: #111;
+	-moz-box-shadow: inset -5px 0 10px #333;
+   	-webkit-box-shadow: inset -5px 0 10px #333;
+   	box-shadow: inset -5px 0 10px #333;
+   	border-right: 1px solid #111;
 }
 
 .sideview-title {

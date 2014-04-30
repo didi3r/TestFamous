@@ -5,6 +5,9 @@ define(function(require, exports, module) {
     var Utility = require('famous/utilities/Utility');
     var ScrollView = require('famous/views/ScrollView');
     var ViewSequence = require('famous/core/ViewSequence');
+    var Draggable = require('famous/modifiers/Draggable');
+    var RenderNode = require('famous/core/RenderNode');
+    var EventHandler = require('famous/core/EventHandler');
 
     function ListView() {
         View.apply(this, arguments);
@@ -27,12 +30,27 @@ define(function(require, exports, module) {
     ListView.prototype.setContent = function(data) {
         for (var i = 0; i < data.length; i++) {
             var item = new Surface({
-                size: [undefined, 50],
+                size: [undefined, 60],
                 content: 'Item ' + data[i],
                 classes: ['listview-item']
-            })
+            });
+
+            var draggable = new Draggable({
+                xRange: [-100, 100],
+                yRange: [0, 0]
+            });
+            
+            var node = new RenderNode(draggable);
+            node.add(item);  
+
+            draggable.on('dragend', function() {
+                console.log('emit swipe')
+                this._eventOutput.emit('swipe');
+            });
+
+            item.pipe(draggable);
             item.pipe(this.scrollView);
-            this.items.push(item);
+            this.items.push(node);
         }
     };
 
