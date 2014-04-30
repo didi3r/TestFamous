@@ -43,8 +43,14 @@ html {
 }
 
 .sideview {
-	color: white;
 	background: #111;
+}
+
+.sideview-title {
+	color: #4D5966;
+	line-height: 70px;
+	padding-left: 10px;
+	font-size: 2em;
 }
 
 .sideview-menu-item {

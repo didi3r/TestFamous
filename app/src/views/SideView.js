@@ -25,6 +25,13 @@ define(function(require, exports, module) {
             classes: ['sideview']
         });
 
+        this.title = new Surface({
+            size: [undefined, 70],
+            origin: [0.1, 0],
+            content: 'Menu',
+            classes: ['sideview-title']
+        });
+
         this.menuLayout = new GridLayout({
             dimensions: [1, 3]
         });
@@ -38,10 +45,11 @@ define(function(require, exports, module) {
         
         this.menuView = new View();
         this.menuView.add(this.background);
+        this.menuView.add(this.title);
 
         this.nodeLayout = new RenderNode(new Modifier({
             size: [this.params.width - 30, this.menuHeight],
-            origin: [0, 0]
+            origin: [0, 0.14]
         }));
         this.nodeLayout.add(this.menuLayout);
 
