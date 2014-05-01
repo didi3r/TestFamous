@@ -43,10 +43,10 @@ define(function(require, exports, module) {
             var node = new RenderNode(draggable);
             node.add(item);  
 
-            draggable.on('dragend', function() {
+            draggable.on('start', function() {
                 console.log('emit swipe')
                 this._eventOutput.emit('swipe');
-            });
+            }.bind(this));
 
             item.pipe(draggable);
             item.pipe(this.scrollView);
