@@ -15,7 +15,7 @@ define(function(require, exports, module) {
     // Constants
     var LATERAL_MENU_WIDTH = 300;
     var LATERAL_MENU_ANIMATION_DURATION = 300;
-    
+
     function App() {
         View.apply(this, arguments);
 
@@ -34,7 +34,7 @@ define(function(require, exports, module) {
         this.sideView = new SideView({
             width: LATERAL_MENU_WIDTH
         });
-        
+
         // Main Layout
         this.layout = new HeaderFooterLayout({
              headerSize: 70,
@@ -48,7 +48,7 @@ define(function(require, exports, module) {
 
         this.list = new ListView();
         this.list.pipe(this._eventInput);
-        this._eventInput.on('swipe', this.swipeListItem.bind(this))
+        this._eventInput.on('swipe', this.swipeListItem)
 
         this.list.setContent([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]);
 
@@ -57,7 +57,7 @@ define(function(require, exports, module) {
         this.node = new RenderNode();
         this.node.add(new Modifier({transform: Transform.translate(0,0,5)})).add(this.sideView);
         this.node.add(this.layout);
-       
+
         this._add(this.mainTransform).add(this.node);
     };
 
@@ -79,8 +79,9 @@ define(function(require, exports, module) {
         console.log('Menu Clicked');
     };
 
-    App.prototype.swipeListItem = function() {
-        console.log('Item Swiped!');
+    App.prototype.swipeListItem = function(item) {
+        console.log(item);
+        console.log(item.getContent() + ' Swiped!');
     };
 
     module.exports = App;

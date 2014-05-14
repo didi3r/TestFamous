@@ -11,8 +11,10 @@ define(function(require, exports, module) {
 
     function ListView() {
         View.apply(this, arguments);
+        this.dragStart = 0;
+        this.dragEnd = 0;
         this.items = [];
-        
+
         this.scrollView = new ScrollView({
             direction: Utility.Direction.Y,
             margin: 100000
@@ -39,16 +41,26 @@ define(function(require, exports, module) {
                 xRange: [-100, 100],
                 yRange: [0, 0]
             });
-            
-            var node = new RenderNode(draggable);
-            node.add(item);  
 
-            draggable.on('start', function() {
-                console.log('emit swipe')
-                this._eventOutput.emit('swipe');
+            var node = new RenderNode(draggable);
+            node.add(item);
+
+            draggable.on('start', function(e) {
+                this.dragStart = e.position[0];
+            }.bind(this));
+
+            draggable.on('end', function(e) {
+                this.dragEnd = e.position[0];
+                console.log('start:' + this.dragStart)
+                console.log('end:' + this.dragEnd)
+                if((this.dragStart - this.dragEnd) >= 60){
+                    this._eventOutput.emit('swipe', item);
+                }
+                e.position[0] = 0;
             }.bind(this));
 
             item.pipe(draggable);
+
             item.pipe(this.scrollView);
             this.items.push(node);
         }
