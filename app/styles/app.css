@@ -47,6 +47,7 @@ html {
 	border-radius: 4px;
 	border: 0;
 	box-shadow: 1px 2px 2px #E0E0E0;
+	white-space: nowrap;
 }
 
 .sideview {

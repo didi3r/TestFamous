@@ -46,7 +46,7 @@ define(function(require, exports, module) {
                 this.dragStart = e.position[0];
             }.bind(this));
 
-            draggable.on('end', function(e) {
+            draggable.on('end', function(item, e) {
                 this.dragEnd = e.position[0];
                 console.log('start:' + this.dragStart)
                 console.log('end:' + this.dragEnd)
@@ -54,7 +54,7 @@ define(function(require, exports, module) {
                     this._eventOutput.emit('swipe', item);
                 }
                 e.position[0] = 0;
-            }.bind(this));
+            }.bind(this, item));
 
             var node = new RenderNode(draggable);
             node.add(item);

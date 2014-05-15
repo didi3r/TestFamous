@@ -80,7 +80,6 @@ define(function(require, exports, module) {
     };
 
     App.prototype.swipeListItem = function(item) {
-        console.log(item);
         console.log(item.getContent() + ' Swiped!');
     };
 
