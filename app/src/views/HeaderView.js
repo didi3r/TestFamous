@@ -7,26 +7,26 @@ define(function(require, exports, module) {
 
     function HeaderView() {
         View.apply(this, arguments);
-        
+
         this.header = new View();
-        
+
         this.sizeModifier = new Modifier({
             size: [undefined, 0.105 * window.innerHeight],
             transform: Transform.inFront
         });
-        
+
         this.background = new Surface({
             classes: ['top-nav-bar']
         });
 
         this.iconModifier = new Modifier({
-           transform: Transform.translate(30, 20, 0)
+           transform: Transform.translate(0, 0, 0)
         });
 
         this.menuIcon = new Surface({
-            size: [50, 50],
-            content: "&#xf0c9",
-            classes: ['icon', 'green'],
+            size: [68, 68],
+            content: "<span class='icon open-menu'>&#xf0c9</span>",
+            classes: ['top-nav-bar-button'],
             properties: {
                 fontSize: '30px'
             }

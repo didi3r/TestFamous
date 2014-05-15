@@ -20,13 +20,29 @@ html {
 }
 
 .icon.green {
-	color: #00B5A9;
 }
 
 .top-nav-bar {
 	color: white;
 	text-align: center;
 	background: #424242;
+}
+
+.top-nav-bar-button {
+	background-color: #f45e5e;
+	color: #FFF;
+	text-align: center;
+}
+
+.top-nav-bar-button .open-menu {
+	display: block;
+	vertical-align: middle;
+	position: relative;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	-moz-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
 }
 
 .content {
@@ -40,14 +56,15 @@ html {
 .listview-item .view {
 	width: 85%;
 	background: #FFF;
-	color: #bababa;
+	color: #767171;
 	padding: 0 30px;
-	margin: 5px auto;
+	margin: 10px auto 0 auto;
 	min-height: 60px;
-	border-radius: 4px;
+	border-radius: 3px;
 	border: 0;
 	box-shadow: 1px 2px 2px #E0E0E0;
 	white-space: nowrap;
+	line-height: 60px;
 }
 
 .sideview {
