@@ -13,7 +13,7 @@ define(function(require, exports, module) {
     var ListView = require('views/ListView');
 
     // Constants
-    var LATERAL_MENU_WIDTH = 300;
+    var LATERAL_MENU_WIDTH = 380;
     var LATERAL_MENU_ANIMATION_DURATION = 300;
 
     function App() {
@@ -30,14 +30,14 @@ define(function(require, exports, module) {
             return Transform.translate(this.mainTransitionable.get(), 0, 0);
         }.bind(this));
 
-        // Create Lateral Menu
-        this.sideView = new SideView({
-            width: LATERAL_MENU_WIDTH
-        });
-
         // Main Layout
         this.layout = new HeaderFooterLayout({
              headerSize: 65,
+        });
+
+        // Create Lateral Menu
+        this.sideView = new SideView({
+            width: LATERAL_MENU_WIDTH
         });
 
         // Create Header
@@ -46,19 +46,20 @@ define(function(require, exports, module) {
         this.header.pipe(this._eventInput);
         this._eventInput.on('menuToggle', this.menuToggle.bind(this))
 
+        // Content
         this.list = new ListView();
         this.list.pipe(this._eventInput);
         this._eventInput.on('swipe', this.swipeListItem)
 
         this.list.setContent([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]);
 
-        this.layout.content.add(this.list);
-
         this.node = new RenderNode();
-        this.node.add(new Modifier({transform: Transform.translate(0,0,5)})).add(this.sideView);
-        this.node.add(this.layout);
+        this.node.add(this.sideView);
+        this.node.add(this.list);
+        this.layout.content.add(this.mainTransform).add(this.node);
+        // this.node.add(this.layout);
 
-        this._add(this.mainTransform).add(this.node);
+        this.add(this.layout);
     };
 
     App.prototype = Object.create(View.prototype);

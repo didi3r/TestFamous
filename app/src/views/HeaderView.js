@@ -37,13 +37,9 @@ define(function(require, exports, module) {
         }.bind(this));
 
         this.title = new Surface({
-            content: 'App Name',
-            size: [100, 20],
-            properties: {
-                color: 'white',
-                fontFamily: 'arial',
-                textAlign: 'center'
-            }
+            content: 'famous app',
+            size: [undefined, 68],
+            classes: ['top-nav-bar-title']
         });
         this.titleModifier = new Modifier({
             origin: [0.5, 0.5],

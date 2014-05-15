@@ -12,12 +12,12 @@ define(function(require, exports, module) {
         this.params = params || {
             width: 500
         };
-        
+
         this.open = false;
 
         this.sideViewModifier = new Modifier({
             size: [this.params.width, undefined ],
-            transform: Transform.translate(-this.params.width + 2, 0, 0)
+            transform: Transform.translate(-this.params.width, 0, 0)
         });
 
         this.background = new Surface({
@@ -25,10 +25,10 @@ define(function(require, exports, module) {
             classes: ['sideview']
         });
 
-        this.title = new Surface({
-            size: [undefined, 70],
-            content: 'Menu',
-            classes: ['sideview-title']
+        this.search = new Surface({
+            size: [undefined, 100],
+            content: '<input type="text" class="search-box" placeholder="Buscar" />',
+            classes: ['sideview-search']
         });
 
         this.menuLayout = new GridLayout({
@@ -41,14 +41,14 @@ define(function(require, exports, module) {
         createButtons.call(this);
         // this.menuHeight = calculateHeight.call(this);
         this.menuHeight = 180;
-        
+
         this.menuView = new View();
         this.menuView.add(this.background);
-        this.menuView.add(this.title);
+        this.menuView.add(this.search);
 
         this.nodeLayout = new RenderNode(new Modifier({
-            size: [this.params.width - 30, this.menuHeight],
-            origin: [0, 0.14]
+            size: [this.params.width, this.menuHeight],
+            origin: [0, 0.2]
         }));
         this.nodeLayout.add(this.menuLayout);
 
@@ -65,50 +65,31 @@ define(function(require, exports, module) {
             {
                 name: 'Home',
                 icon: '&#xf0c2',
-                color: '#00B4A9'
             },
             {
                 name: 'Donate',
                 icon: '&#xf004',
-                color: '#77BF6E'
             },
             {
                 name: 'About',
                 icon: '&#xf059',
-                color: '#DADD89'
             }
         ];
 
         for(var i = 0; i < categories.length; i++) {
-            var itemView = new View();
-
-            var itemBox = new Surface({
-                size: [undefined, 40],
-                classes: ["sideview-menu-item"],
-                properties: {
-                    background: categories[i]['color']
-                }
+            var item = new Surface({
+                size: [undefined, 60],
+                classes: ["sideview-item"],
+                content:
+                    '<div class="view">' +
+                        // '<span class="icon">' +
+                        //     categories[i]['icon'] +
+                        // '</span> ' +
+                        categories[i]["name"] +
+                    '</div>'
             });
 
-            var itemText = new Surface({
-                size: [true, true],
-                classes: ["sideview-menu-item-text"],
-                content: '<span class="icon">' + categories[i]['icon'] + '</span> ' + categories[i]["name"],
-                properties: {
-                    lineHeight: '40px'
-                }
-            });
-            
-            var nodeText = new RenderNode(new Modifier({
-                origin: [0.05, 0],
-                transform: Transform.inFront
-            }));
-            nodeText.add(itemText);
-
-            itemView.add(itemBox);
-            itemView.add(nodeText);
-
-            this.menuItems.push(itemView);
+            this.menuItems.push(item);
         }
     }
 

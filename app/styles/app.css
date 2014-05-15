@@ -15,23 +15,25 @@ html {
 	font-family: FontAwesome;
 }
 
-.icon.red {
-	color: #FA5C4F;
-}
-
-.icon.green {
-}
-
 .top-nav-bar {
-	color: white;
+	color: #FFF;
 	text-align: center;
 	background: #424242;
+}
+
+.top-nav-bar-title {
+	color: #FFF;
+	font-size: 25px;
+	text-align: center;
+	line-height: 60px;
+	z-index: 0;
 }
 
 .top-nav-bar-button {
 	background-color: #f45e5e;
 	color: #FFF;
 	text-align: center;
+	z-index: 1;
 }
 
 .top-nav-bar-button .open-menu {
@@ -54,7 +56,7 @@ html {
 }
 
 .listview-item .view {
-	width: 85%;
+	width: 93%;
 	background: #FFF;
 	color: #767171;
 	padding: 0 30px;
@@ -67,31 +69,52 @@ html {
 	line-height: 60px;
 }
 
+@media screen and (max-width: 768px) {
+	.listview-item .view {
+		width: 85%;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.listview-item .view {
+		width: 81%;
+	}
+}
+
 .sideview {
-	background: #111;
-	-moz-box-shadow: inset -5px 0 10px #333;
-   	-webkit-box-shadow: inset -5px 0 10px #333;
-   	box-shadow: inset -5px 0 10px #333;
-   	border-right: 1px solid #111;
+	background: #000 url(../content/images/lateral-menu-bg.png) scroll;
 }
 
-.sideview-title {
-	color: #4D5966;
-	line-height: 70px;
-	padding-left: 10px;
-	font-size: 2em;
+.sideview-search {
+	text-align: center;
 }
 
-.sideview-menu-item {
-	/*background: #FA5C4F;*/
+.sideview-item .view,
+.sideview-search .search-box {
+	font-family: 'Noto Sans', sans-serif;
+	color: #d1d1d1;
 }
 
-.sideview-menu-item-text {
-	color: white;
-	font-size: 1em;
-	text-transform: uppercase;
+.sideview-search .search-box {
+	background: rgba(0, 0, 0, 0.8);
+	border: 0;
+	outline: 0;
+	border-radius: 4px;
+	width: 80%;
+	height: 40px;
+	padding: 0 10px;
+	position: relative;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	-moz-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
 }
 
-.sideview-menu-item-text .icon {
-	font-size: 1.3em;
+
+.sideview-item .view {
+	padding: 0 10px 0 35px;
+	line-height: 60px;
+	border-bottom: 1px solid #080809;
+	box-shadow: 0 1px 1px #28272d;
 }
