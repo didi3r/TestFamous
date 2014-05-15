@@ -69,11 +69,23 @@ define(function(require, exports, module) {
 
     App.prototype.menuToggle = function() {
         if (!this.sideView.open) {
-            this.mainTransitionable.set(LATERAL_MENU_WIDTH, { duration: LATERAL_MENU_ANIMATION_DURATION, curve: Easing.outBack });
+            this.mainTransitionable.set(
+                LATERAL_MENU_WIDTH,
+                {
+                    duration: LATERAL_MENU_ANIMATION_DURATION,
+                    curve: Easing.inSine
+                }
+            );
             // this.sideView.flipOut();
         }
         else {
-            this.mainTransitionable.set(0, { duration: LATERAL_MENU_ANIMATION_DURATION, curve: Easing.outBack });
+            this.mainTransitionable.set(
+                0,
+                {
+                    duration: LATERAL_MENU_ANIMATION_DURATION,
+                    curve: Easing.outCirc
+                }
+            );
             // this.sideView.flipIn();
         }
         this.sideView.open = !this.sideView.open;
@@ -81,7 +93,7 @@ define(function(require, exports, module) {
     };
 
     App.prototype.swipeListItem = function(item) {
-        console.log(item.getContent() + ' Swiped!');
+        console.log(item.id + ' Swiped!');
     };
 
     module.exports = App;

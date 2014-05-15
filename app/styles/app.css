@@ -56,7 +56,12 @@ html {
 }
 
 .listview-item .view {
-	width: 93%;
+	width: 95%;
+	margin: 0 auto;
+	position: relative;
+}
+
+.listview-item .view .content {
 	background: #FFF;
 	color: #767171;
 	padding: 0 30px;
@@ -69,24 +74,92 @@ html {
 	line-height: 60px;
 }
 
-@media screen and (max-width: 768px) {
-	.listview-item .view {
-		width: 85%;
-	}
+.listview-item .view .delete,
+.listview-item .view .options {
+	position: absolute;
+	top: 0;
 }
 
-@media screen and (max-width: 480px) {
-	.listview-item .view {
-		width: 81%;
-	}
+.listview-item .view .delete {
+	display: block;
+	left: -120px;
+	width: 100px;
+	height: 60px;
+	color: #cac5be;
+	z-index: -1;
+}
+
+.listview-item .view .delete i,
+.listview-item .view .delete span {
+	display: inline-block;
+	position: relative;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	-moz-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+
+.listview-item .view .delete i {
+	width: 20%;
+	font-size: 28px;
+	margin-right: 5px;
+	float: left;
+}
+
+.listview-item .view .delete span {
+	width: 75%;
+	font-size: 14px;
+}
+
+.listview-item .view .options {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	text-align: center;
+	width: 100px;
+	right: -110px;
+	opacity: 0.5;
+	z-index: -1;
+	transition: opacity 0.3s;
+}
+
+.listview-item .view .options li {
+	display: inline-block;
+	margin-right: 20px;
+	line-height: 60px;
+	font-size: 25px;
+	transition: font-size 0.3s;
+}
+
+.listview-item .view .options li:last-child {
+	margin: 0;
+}
+
+.listview-item .view .options li .fa-heart 		{ color: #f17e56 }
+.listview-item .view .options li .fa-comment 	{ color: #85d2c5 }
+.listview-item .view .options li .fa-share-alt 	{ color: #fadb9b }
+
+.listview-item.show-options .view .options {
+	opacity: 1;
+}
+
+.listview-item.show-options .view .options li {
+	font-size: 35px;
 }
 
 .sideview {
 	background: #000 url(../content/images/lateral-menu-bg.png) scroll;
+	z-index: 100;
 }
 
 .sideview-search {
 	text-align: center;
+	z-index: 101;
+}
+
+.sideview-item {
+	z-index: 101;
 }
 
 .sideview-item .view,

@@ -24,7 +24,7 @@ define(function(require, exports, module) {
         });
 
         this.menuIcon = new Surface({
-            size: [68, 68],
+            size: [67, 67],
             content: "<span class='icon open-menu'>&#xf0c9</span>",
             classes: ['top-nav-bar-button'],
             properties: {
