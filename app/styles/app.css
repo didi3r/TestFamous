@@ -1,7 +1,7 @@
 html {
  	background: #AAA;
 	font-family: 'Roboto', sans-serif;
-} 
+}
 
 @font-face {
   font-family: "FontAwesome";
@@ -40,6 +40,7 @@ html {
 	border-bottom: 1px solid #3F4751;
 	line-height: 60px;
 	padding: 0 30px;
+	white-space: nowrap;
 }
 
 .sideview {
