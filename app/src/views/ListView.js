@@ -57,23 +57,22 @@ define(function(require, exports, module) {
                 this.dragStart = e.position[0];
             }.bind(this));
 
-            draggable.on('end', function(item, e) {
+            draggable.on('end', function(draggable, item, e) {
                 this.dragEnd = e.position[0];
-                if((this.dragStart - this.dragEnd) >= 130){
+                var distance = this.dragStart - this.dragEnd;
+
+                if(distance > 0 && distance >= 130){
                     e.position[0] = -130;
                     item.addClass('show-options');
+                } else if(distance < 0 && distance <= -120) {
+                    this._eventOutput.emit('swipe', draggable);
+                    e.position[0] = 0;
                 } else {
                     item.removeClass('show-options');
                     e.position[0] = 0;
                 }
 
-                if((this.dragStart - this.dragEnd) >= -120){
-                    e.position[0] = 0;
-                } else {
-                    this._eventOutput.emit('swipe', item);
-                    e.position[0] = 0;
-                }
-            }.bind(this, item));
+            }.bind(this, draggable, item));
 
             var node = new RenderNode(draggable);
             node.add(item);
@@ -84,6 +83,18 @@ define(function(require, exports, module) {
         }
     };
 
+    ListView.prototype.removeElement = function(item) {
+        var index = -1;
+        for (var i = 0; i < this.items.length; i++) {
+            if(this.items[i].get() == item) {
+                index = i;
+                break;
+            }
+        }
+        if(index != -1) {
+            this.items.splice(index, 1);
+        }
+    }
 
     module.exports = ListView;
 });

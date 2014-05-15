@@ -49,7 +49,7 @@ define(function(require, exports, module) {
         // Content
         this.list = new ListView();
         this.list.pipe(this._eventInput);
-        this._eventInput.on('swipe', this.swipeListItem)
+        this._eventInput.on('swipe', this.swipeListItem.bind(this))
 
         this.list.setContent([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]);
 
@@ -93,7 +93,7 @@ define(function(require, exports, module) {
     };
 
     App.prototype.swipeListItem = function(item) {
-        console.log(item.id + ' Swiped!');
+        this.list.removeElement(item);
     };
 
     module.exports = App;
