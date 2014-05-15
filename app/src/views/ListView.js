@@ -32,8 +32,8 @@ define(function(require, exports, module) {
     ListView.prototype.setContent = function(data) {
         for (var i = 0; i < data.length; i++) {
             var item = new Surface({
-                size: [undefined, 60],
-                content: 'Item ' + data[i],
+                size: [undefined, 70],
+                content: '<div class="view"> Item ' + data[i] + '</div>',
                 classes: ['listview-item']
             });
 
@@ -41,9 +41,6 @@ define(function(require, exports, module) {
                 xRange: [-100, 100],
                 yRange: [0, 0]
             });
-
-            var node = new RenderNode(draggable);
-            node.add(item);
 
             draggable.on('start', function(e) {
                 this.dragStart = e.position[0];
@@ -59,9 +56,11 @@ define(function(require, exports, module) {
                 e.position[0] = 0;
             }.bind(this));
 
+            var node = new RenderNode(draggable);
+            node.add(item);
             item.pipe(draggable);
-
             item.pipe(this.scrollView);
+
             this.items.push(node);
         }
     };

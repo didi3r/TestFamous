@@ -37,7 +37,7 @@ define(function(require, exports, module) {
 
         // Main Layout
         this.layout = new HeaderFooterLayout({
-             headerSize: 70,
+             headerSize: 65,
         });
 
         // Create Header
