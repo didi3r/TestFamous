@@ -13,6 +13,7 @@ define(function(require, exports, module) {
     var ListView = require('views/ListView');
 
     // Constants
+    var HEADER_HEIGHT = 0.105 * window.innerHeight;
     var LATERAL_MENU_WIDTH = 380;
     var LATERAL_MENU_ANIMATION_DURATION = 300;
 
@@ -32,7 +33,7 @@ define(function(require, exports, module) {
 
         // Main Layout
         this.layout = new HeaderFooterLayout({
-             headerSize: 65,
+             headerSize: HEADER_HEIGHT,
         });
 
         // Create Lateral Menu
@@ -41,7 +42,9 @@ define(function(require, exports, module) {
         });
 
         // Create Header
-        this.header = new HeaderView();
+        this.header = new HeaderView({
+            Height: HEADER_HEIGHT
+        });
         this.layout.header.add(this.header);
         this.header.pipe(this._eventInput);
         this._eventInput.on('menuToggle', this.menuToggle.bind(this))

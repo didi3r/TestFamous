@@ -5,13 +5,17 @@ define(function(require, exports, module) {
     var View  = require('famous/core/View');
     var Transform = require('famous/core/Transform');
 
-    function HeaderView() {
+    function HeaderView(params) {
         View.apply(this, arguments);
+
+        this.params = params || {
+            height: 50
+        };
 
         this.header = new View();
 
         this.sizeModifier = new Modifier({
-            size: [undefined, 0.105 * window.innerHeight],
+            size: [undefined, this.params.height],
             transform: Transform.inFront
         });
 
@@ -24,7 +28,7 @@ define(function(require, exports, module) {
         });
 
         this.menuIcon = new Surface({
-            size: [67, 67],
+            size: [67, this.params.height],
             content: "<span class='icon open-menu'>&#xf0c9</span>",
             classes: ['top-nav-bar-button'],
             properties: {
