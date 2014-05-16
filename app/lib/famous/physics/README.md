@@ -1,4 +1,4 @@
-Physics: Famo.us core physics engine [![Build Status](https://travis-ci.org/Famous/physics.svg)](https://travis-ci.org/Famous/physics)
+Physics: Famo.us core physics engine
 ====================================
 
 Core engine controlling animations via physical simulation.

@@ -144,17 +144,14 @@ define(function(require, exports, module) {
         var period       = options.period;
         var minLength    = options.minLength;
 
-        var p2;
-        var w2;
-
         if (source) {
+            var p2 = source.position;
+            var w2 = source.inverseMass;
             var v2 = source.velocity;
-            p2 = source.position;
-            w2 = source.inverseMass;
         }
         else {
-            p2 = this.options.anchor;
-            w2 = 0;
+            var p2 = this.options.anchor;
+            var w2 = 0;
         }
 
         var length = this.options.length;
@@ -178,19 +175,17 @@ define(function(require, exports, module) {
             else        diffV.set(v1);
 
             var effMass = 1 / (w1 + w2);
-            var gamma;
-            var beta;
 
             if (period === 0) {
-                gamma = 0;
-                beta  = 1;
+                var gamma = 0;
+                var beta  = 1;
             }
             else {
                 var c = 4 * effMass * pi * dampingRatio / period;
                 var k = 4 * effMass * pi * pi / (period * period);
 
-                gamma = 1 / (c + dt*k);
-                beta  = dt*k / (c + dt*k);
+                var gamma = 1 / (c + dt*k);
+                var beta  = dt*k / (c + dt*k);
             }
 
             var antiDrift = beta/dt * dist;

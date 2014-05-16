@@ -16,7 +16,7 @@ define(function(require, exports, module) {
      *
      * @class PhysicsEngine
      * @constructor
-     * @param options {Object} options
+     * @param optoins {Object} options
      */
     function PhysicsEngine(options) {
         this.options = Object.create(PhysicsEngine.DEFAULT_OPTIONS);

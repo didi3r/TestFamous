@@ -7,6 +7,8 @@ define(function(require, exports, module) {
     var Transitionable     = require('famous/transitions/Transitionable');
     var HeaderFooterLayout = require('famous/views/HeaderFooterLayout');
 
+    var Backbone           = require('backbone');
+
     // Custom Views
     var HeaderView   = require('views/HeaderView');
     var SideView     = require('views/SideView');

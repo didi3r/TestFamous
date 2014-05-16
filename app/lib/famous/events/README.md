@@ -1,4 +1,4 @@
-Events: Famous eventing libraries [![Build Status](https://travis-ci.org/Famous/events.svg)](https://travis-ci.org/Famous/events)
+Events: Famous eventing libraries
 =================================
 
 Events are used for communication between objects in Famous.  Famo.us implements

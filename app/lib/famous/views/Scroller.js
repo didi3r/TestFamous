@@ -8,8 +8,8 @@ define(function(require, exports, module) {
     var EventHandler = require('famous/core/EventHandler');
 
     /**
-     * Scroller lays out a collection of renderables, and will browse through them based on
-     * accessed position. Scroller also broadcasts an 'edgeHit' event, with a position property of the location of the edge,
+     * Scroller lays out a collection of renderables, and will browse through them based on 
+     * accesed position. Scroller also broadcasts an 'edgeHit' event, with a position property of the location of the edge,
      * when you've hit the 'edges' of it's renderable collection.
      * @class Scroller
      * @constructor
@@ -57,8 +57,7 @@ define(function(require, exports, module) {
     Scroller.DEFAULT_OPTIONS = {
         direction: Utility.Direction.Y,
         margin: 0,
-        clipSize: undefined,
-        groupScroll: false
+        clipSize: undefined
     };
 
     function _sizeForDir(size) {
@@ -85,12 +84,7 @@ define(function(require, exports, module) {
      * @param {Options} options An object of configurable options for the Scroller instance.
      */
     Scroller.prototype.setOptions = function setOptions(options) {
-        this._optionsManager.setOptions(options);
-
-        if (this.options.groupScroll)
-            this.group.pipe(this._eventOutput);
-        else
-            this.group.unpipe(this._eventOutput);
+        return this._optionsManager.setOptions(options);
     };
 
     /**
@@ -106,7 +100,7 @@ define(function(require, exports, module) {
      * Allows you to overwrite the way Scroller lays out it's renderables. Scroller will
      * pass an offset into the function. By default the Scroller instance just translates each node
      * in it's direction by the passed-in offset.
-     * Scroller will translate each renderable down
+     * Scroller will translate each renderable down 
      * @method outputFrom
      * @param {Function} fn A function that takes an offset and returns a transform.
      * @param {Function} [masterFn]
