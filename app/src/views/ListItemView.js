@@ -22,7 +22,7 @@ define(function(require, exports, module) {
         this.listeners.push(target);
     }
 
-    ListItemView.prototype.setContent = function(data) {
+    ListItemView.prototype.setContent = function(object) {
         this.item = new Surface({
             size: [undefined, 70],
             content:
@@ -31,7 +31,7 @@ define(function(require, exports, module) {
                         '<i class="fa fa-times"></i>' +
                         '<span>Suelta Para Eliminar</span>' +
                     '</div>' +
-                    '<div class="content">Item ' + data.content + '</div>' +
+                    '<div class="content">Item ' + object.content + '</div>' +
                     '<ul class="options">' +
                         '<li><i class="fa fa-heart"></i></li>' +
                         '<li><i class="fa fa-comment"></i></li>' +

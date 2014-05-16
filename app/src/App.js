@@ -1,4 +1,5 @@
 define(function(require, exports, module) {
+    // famous
     var View               = require('famous/core/View');
     var Modifier           = require('famous/core/Modifier');
     var Transform          = require('famous/core/Transform');
@@ -7,13 +8,17 @@ define(function(require, exports, module) {
     var Transitionable     = require('famous/transitions/Transitionable');
     var HeaderFooterLayout = require('famous/views/HeaderFooterLayout');
 
+    // backbone
     var Backbone           = require('backbone');
 
     // Custom Views
-    var HeaderView   = require('views/HeaderView');
-    var SideView     = require('views/SideView');
-    var ListView     = require('views/ListView');
-    var ListItemView = require('views/ListItemView');
+    var HeaderView         = require('views/HeaderView');
+    var SideView           = require('views/SideView');
+    var ListView           = require('views/ListView');
+    var ListItemView       = require('views/ListItemView');
+
+    // Models
+    var ItemModel          = require('models/ItemModel');
 
     // Constants
     var HEADER_HEIGHT = 0.105 * window.innerHeight;
@@ -22,7 +27,6 @@ define(function(require, exports, module) {
 
     function App() {
         View.apply(this, arguments);
-
 
         // Create the mainTransforms for shifting the entire view over on menu open
         this.mainTransform = new Modifier({
@@ -58,7 +62,22 @@ define(function(require, exports, module) {
         this._eventInput.on('swipe', this.swipeListItem.bind(this))
 
         this.list.setItemView(ListItemView);
-        this.list.setContent([
+        // this.list.setContent([
+        //     {content: 'Lorem Ipsum'},
+        //     {content: 'Dolor sit amett'},
+        //     {content: 'Parsque consequteur'},
+        //     {content: 'Lorem Ipsum'},
+        //     {content: 'Dolor sit amett'},
+        //     {content: 'Parsque consequteur'},
+        //     {content: 'Lorem Ipsum'},
+        //     {content: 'Dolor sit amett'},
+        //     {content: 'Parsque consequteur'},
+        // ]);
+
+        var itemCollection = Backbone.Collection.extend({
+            model: ItemModel
+        });
+        var items = new itemCollection([
             {content: 'Lorem Ipsum'},
             {content: 'Dolor sit amett'},
             {content: 'Parsque consequteur'},
@@ -69,6 +88,7 @@ define(function(require, exports, module) {
             {content: 'Dolor sit amett'},
             {content: 'Parsque consequteur'},
         ]);
+        this.list.setContent(items);
 
         this.node = new RenderNode();
         this.node.add(this.sideView);

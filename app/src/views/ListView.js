@@ -34,7 +34,7 @@ define(function(require, exports, module) {
     }
 
     ListView.prototype.setContent = function(collection) {
-        for (var i = 0; i < collection.length; i++) {
+        collection.each(function(object) {
             var item = new this.ListItemView();
 
             var draggable = new Draggable({
@@ -68,10 +68,10 @@ define(function(require, exports, module) {
 
             item.pipeTo(this.scrollView);
             item.pipeTo(draggable);
-            item.setContent(collection[i]);
+            item.setContent(object.attributes);
 
             this.items.push(node);
-        }
+        }, this);
     };
 
     ListView.prototype.removeElement = function(item) {
