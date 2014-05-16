@@ -37,7 +37,6 @@ define(function(require, exports, module) {
     ListView.prototype.setContent = function(collection) {
         for (var i = 0; i < collection.length; i++) {
             var item = new this.ListItemView();
-            item.setContent(collection[i]);
 
             var draggable = new Draggable({
                 xRange: [-150, 150],
@@ -54,12 +53,12 @@ define(function(require, exports, module) {
 
                 if(distance > 0 && distance >= 130){
                     e.position[0] = -130;
-                    item.addClass('show-options');
+                    // item.addClass('show-options');
                 } else if(distance < 0 && distance <= -120) {
                     this._eventOutput.emit('swipe', draggable);
                     e.position[0] = 0;
                 } else {
-                    item.removeClass('show-options');
+                    // item.removeClass('show-options');
                     e.position[0] = 0;
                 }
 
@@ -68,12 +67,9 @@ define(function(require, exports, module) {
             var node = new RenderNode(draggable);
             node.add(item);
 
-            item.pipe(draggable);
-            item.pipe(this.scrollView);
-
-            item._eventInput.on('click', function() {
-                console.log('hello');
-            });
+            item.pipeTo(this.scrollView);
+            item.pipeTo(draggable);
+            item.setContent(collection[i]);
 
             this.items.push(node);
         }

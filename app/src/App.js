@@ -60,6 +60,12 @@ define(function(require, exports, module) {
             {content: 'Lorem Ipsum'},
             {content: 'Dolor sit amett'},
             {content: 'Parsque consequteur'},
+            {content: 'Lorem Ipsum'},
+            {content: 'Dolor sit amett'},
+            {content: 'Parsque consequteur'},
+            {content: 'Lorem Ipsum'},
+            {content: 'Dolor sit amett'},
+            {content: 'Parsque consequteur'},
         ]);
 
         this.node = new RenderNode();
