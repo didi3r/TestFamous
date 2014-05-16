@@ -5,13 +5,13 @@ define(function(require, exports, module) {
 
     function ListItemView(params) {
         View.apply(this, arguments);
-        this.listItemView = new View();
+        this.view = new View();
 
         this.params = params || {
             height: 50
         }
 
-        this._add(this.listItemView);
+        this._add(this.view);
     };
 
     ListItemView.prototype = Object.create(View.prototype);
@@ -34,8 +34,12 @@ define(function(require, exports, module) {
                 '</div>',
             classes: ['listview-item']
         });
-        this.listItemView.pipe(this.item);
-        this.listItemView._add(this.item);
+        this.view._add(this.item);
+        this.item.pipe(this.view);
+
+        this.view._eventInput.on('click', function() {
+            console.log('_eventInput');
+        });
     }
 
     module.exports = ListItemView;

@@ -71,6 +71,10 @@ define(function(require, exports, module) {
             item.pipe(draggable);
             item.pipe(this.scrollView);
 
+            item._eventInput.on('click', function() {
+                console.log('hello');
+            });
+
             this.items.push(node);
         }
     };
