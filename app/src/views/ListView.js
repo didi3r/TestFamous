@@ -11,6 +11,7 @@ define(function(require, exports, module) {
 
     function ListView() {
         View.apply(this, arguments);
+        this.ListItemView = View;
         this.dragStart = 0;
         this.dragEnd = 0;
         this.items = [];
@@ -29,24 +30,14 @@ define(function(require, exports, module) {
     ListView.prototype = Object.create(View.prototype);
     ListView.prototype.constructor = ListView;
 
-    ListView.prototype.setContent = function(data) {
-        for (var i = 0; i < data.length; i++) {
-            var item = new Surface({
-                size: [undefined, 70],
-                content:
-                    '<div class="view"> ' +
-                        '<div class="delete">' +
-                            '<i class="fa fa-times"></i>' +
-                            '<span>Suelta Para Eliminar</span>' +
-                        '</div>' +
-                        '<div class="content">Item ' + data[i] + '</div>' +
-                        '<ul class="options">' +
-                            '<li><i class="fa fa-heart"></i></li>' +
-                            '<li><i class="fa fa-comment"></i></li>' +
-                        '</ul>' +
-                    '</div>',
-                classes: ['listview-item']
-            });
+    ListView.prototype.setItemView = function (view) {
+        this.ListItemView = view;
+    }
+
+    ListView.prototype.setContent = function(collection) {
+        for (var i = 0; i < collection.length; i++) {
+            var item = new this.ListItemView();
+            item.setContent(collection[i]);
 
             var draggable = new Draggable({
                 xRange: [-150, 150],
@@ -76,6 +67,7 @@ define(function(require, exports, module) {
 
             var node = new RenderNode(draggable);
             node.add(item);
+
             item.pipe(draggable);
             item.pipe(this.scrollView);
 

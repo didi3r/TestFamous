@@ -55,7 +55,6 @@ define(function(require, exports, module) {
         this.header._add(this.titleModifier).add(this.title);
 
         this._add(this.sizeModifier).add(this.header);
-
     };
 
     HeaderView.prototype = Object.create(View.prototype);
