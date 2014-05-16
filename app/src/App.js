@@ -54,7 +54,18 @@ define(function(require, exports, module) {
         this.list.pipe(this._eventInput);
         this._eventInput.on('swipe', this.swipeListItem.bind(this))
 
-        this.list.setContent([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]);
+        this.list.setItemView(ListItemView);
+        this.list.setContent([
+            {content: 'Lorem Ipsum'},
+            {content: 'Dolor sit amett'},
+            {content: 'Parsque consequteur'},
+            {content: 'Lorem Ipsum'},
+            {content: 'Dolor sit amett'},
+            {content: 'Parsque consequteur'},
+            {content: 'Lorem Ipsum'},
+            {content: 'Dolor sit amett'},
+            {content: 'Parsque consequteur'},
+        ]);
 
         this.node = new RenderNode();
         this.node.add(this.sideView);
