@@ -8,9 +8,10 @@ define(function(require, exports, module) {
     var HeaderFooterLayout = require('famous/views/HeaderFooterLayout');
 
     // Custom Views
-    var HeaderView = require('views/HeaderView');
-    var SideView = require('views/SideView');
-    var ListView = require('views/ListView');
+    var HeaderView   = require('views/HeaderView');
+    var SideView     = require('views/SideView');
+    var ListView     = require('views/ListView');
+    var ListItemView = require('views/ListItemView');
 
     // Constants
     var HEADER_HEIGHT = 0.105 * window.innerHeight;
