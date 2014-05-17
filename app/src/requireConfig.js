@@ -1,17 +1,16 @@
 /*globals require*/
 require.config({
     shim: {
-        'backbone': {
-            //These script dependencies should be loaded before loading
-            //backbone.js
-            deps: ['underscore', 'jquery'],
-            //Once loaded, use the global 'Backbone' as the
-            //module value.
+        backbone: {
+            deps: [
+                'underscore',
+                'jquery'
+            ],
             exports: 'Backbone'
         },
-        'underscore': {
+        underscore: {
             exports: '_'
-        },
+        }
     },
     paths: {
         famous: '../lib/famous',
