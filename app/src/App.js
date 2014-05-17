@@ -22,7 +22,7 @@ define(function(require, exports, module) {
 
     // Constants
     var HEADER_HEIGHT = 0.105 * window.innerHeight;
-    var LATERAL_MENU_WIDTH = 380;
+    var LATERAL_MENU_WIDTH = window.innerWidth * 0.75;
     var LATERAL_MENU_ANIMATION_DURATION = 300;
 
     function App() {
