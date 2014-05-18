@@ -4,6 +4,7 @@ define(function(require, exports, module) {
     var Surface = require('famous/core/Surface');
     var Utility = require('famous/utilities/Utility');
     var ScrollView = require('famous/views/ScrollView');
+    var Modifier           = require('famous/core/Modifier');
     var ViewSequence = require('famous/core/ViewSequence');
     var Draggable = require('famous/modifiers/Draggable');
     var RenderNode = require('famous/core/RenderNode');
@@ -64,7 +65,7 @@ define(function(require, exports, module) {
             }.bind(this, draggable, item));
 
             var node = new RenderNode(draggable);
-            node.add(item);
+            node.add(new Modifier({origin: [0.5, 0]})).add(item);
 
             item.pipeTo(this.scrollView);
             item.pipeTo(draggable);

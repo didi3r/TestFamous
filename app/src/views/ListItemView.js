@@ -24,7 +24,7 @@ define(function(require, exports, module) {
 
     ListItemView.prototype.setContent = function(object) {
         this.item = new Surface({
-            size: [undefined, 70],
+            size: [APP_WIDTH - 30, 70],
             content:
                 '<div class="view"> ' +
                     '<div class="delete">' +

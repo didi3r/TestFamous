@@ -1,3 +1,10 @@
+// Constants
+var APP_HEIGHT = window.innerHeight;
+var APP_WIDTH = window.innerWidth;
+var HEADER_HEIGHT = 0.105 * APP_HEIGHT;
+var LATERAL_MENU_WIDTH = APP_WIDTH * 0.75;
+var LATERAL_MENU_ANIMATION_DURATION = 300;
+
 define(function(require, exports, module) {
     // famous
     var View               = require('famous/core/View');
@@ -20,10 +27,6 @@ define(function(require, exports, module) {
     // Models
     var ItemModel          = require('models/ItemModel');
 
-    // Constants
-    var HEADER_HEIGHT = 0.105 * window.innerHeight;
-    var LATERAL_MENU_WIDTH = window.innerWidth * 0.75;
-    var LATERAL_MENU_ANIMATION_DURATION = 300;
 
     function App() {
         View.apply(this, arguments);
