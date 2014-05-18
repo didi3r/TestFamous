@@ -1,14 +1,16 @@
+* {
+    box-sizing: border-box;
+}
+
 html {
  	background: #ebebeb;
 	font-family: 'Roboto', sans-serif;
 }
 
-@font-face {
-  font-family: "FontAwesome";
-  src: url('../content/fonts/fontawesome-webfont.eot');
-  src: url('../content/fonts/fontawesome-webfont.eot?#iefix') format('eot'), url('../content/fonts/fontawesome-webfont.woff') format('woff'), url('../content/fonts/fontawesome-webfont.ttf') format('truetype'), url('../content/fonts/fontawesome-webfont.svg#FontAwesome')    format('svg');
-  font-weight: normal;
-  font-style: normal;
+.group:after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
 .icon {
@@ -38,12 +40,12 @@ html {
 
 .top-nav-bar-button .open-menu {
 	display: block;
-	vertical-align: middle;
 	position: relative;
 	top: 50%;
 	-webkit-transform: translateY(-50%);
 	-moz-transform: translateY(-50%);
 	-ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
 	transform: translateY(-50%);
 }
 
@@ -60,6 +62,10 @@ html {
 	position: relative;
 }
 
+.listview-item .task-view {
+    height: 100%;
+}
+
 .listview-item .view .content {
 	background: #FFF;
 	color: #767171;
@@ -71,6 +77,12 @@ html {
 	box-shadow: 1px 2px 2px #E0E0E0;
 	white-space: nowrap;
 	line-height: 60px;
+    height: 90%;
+}
+
+.listview-item .task-view .content {
+    line-height: 1em;
+    padding: 10px 15px;
 }
 
 .listview-item .view .delete,
@@ -96,6 +108,7 @@ html {
 	-webkit-transform: translateY(-50%);
 	-moz-transform: translateY(-50%);
 	-ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
 	transform: translateY(-50%);
 }
 
@@ -131,6 +144,10 @@ html {
 	transition: font-size 0.3s;
 }
 
+.listview-item .task-view .options li {
+    line-height: 1em;
+}
+
 .listview-item .view .options li:last-child {
 	margin: 0;
 }
@@ -145,6 +162,34 @@ html {
 
 .listview-item.show-options .view .options li {
 	font-size: 35px;
+}
+
+.listview-item .task-view .title,
+.listview-item .task-view .content > div {
+    display: block;
+    width: 100%;
+}
+
+.listview-item .task-view .content > div {
+    font-size: 12px;
+    color: #CCC;
+    position: absolute;
+    bottom: 15px;
+    left: 0;
+}
+
+.listview-item .task-view .content .date,
+.listview-item .task-view .content .status {
+    width: 45%;
+    float: left;
+    margin-left: 15px;
+}
+
+.listview-item .task-view .content .status {
+    text-align: right;
+    float: right;
+    margin-left: 0;
+    margin-right: 15px;
 }
 
 .sideview {
@@ -170,19 +215,23 @@ html {
 .sideview-search .search-box {
 	background: rgba(0, 0, 0, 0.8);
 	border: 0;
-	outline: 0;
-	border-radius: 4px;
-	width: 80%;
-	height: 40px;
-	padding: 0 10px;
-	position: relative;
-	top: 50%;
-	-webkit-transform: translateY(-50%);
-	-moz-transform: translateY(-50%);
-	-ms-transform: translateY(-50%);
-	transform: translateY(-50%);
+    border-radius: 4px;
+    width: 80%;
+    height: 40px;
+    padding: 0 10px;
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
 }
 
+.sideview-search .search-box:focus {
+	outline: 0;
+    background: rgba(0, 0, 0, 0.9);
+}
 
 .sideview-item .view {
 	padding: 0 10px 0 35px;

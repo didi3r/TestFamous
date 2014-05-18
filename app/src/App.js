@@ -22,7 +22,7 @@ define(function(require, exports, module) {
     var HeaderView         = require('views/HeaderView');
     var SideView           = require('views/SideView');
     var ListView           = require('views/ListView');
-    var ListItemView       = require('views/ListItemView');
+    var TaskListItemView   = require('views/TaskListItemView');
 
     // Models
     var ItemModel          = require('models/ItemModel');
@@ -57,14 +57,14 @@ define(function(require, exports, module) {
         });
         this.layout.header.add(this.header);
         this.header.pipe(this._eventInput);
-        this._eventInput.on('menuToggle', this.menuToggle.bind(this))
+        this._eventInput.on('menuToggle', this.menuToggle.bind(this));
 
         // Content
         this.list = new ListView();
         this.list.pipe(this._eventInput);
-        this._eventInput.on('swipe', this.swipeListItem.bind(this))
+        this._eventInput.on('swipe', this.swipeListItem.bind(this));
 
-        this.list.setItemView(ListItemView);
+        this.list.setItemView(TaskListItemView);
         // this.list.setContent([
         //     {content: 'Lorem Ipsum'},
         //     {content: 'Dolor sit amett'},
@@ -81,15 +81,15 @@ define(function(require, exports, module) {
             model: ItemModel
         });
         var items = new itemCollection([
-            {content: 'Lorem Ipsum'},
-            {content: 'Dolor sit amett'},
-            {content: 'Parsque consequteur'},
-            {content: 'Lorem Ipsum'},
-            {content: 'Dolor sit amett'},
-            {content: 'Parsque consequteur'},
-            {content: 'Lorem Ipsum'},
-            {content: 'Dolor sit amett'},
-            {content: 'Parsque consequteur'},
+            {content: 'Lorem Ipsum', date: 'May 18 2014 4:09pm', status: 'Undone'},
+            {content: 'Dolor sit amett', date: 'May 18 2014 4:09pm', status: 'Undone'},
+            {content: 'Parsque consequteur', date: 'May 18 2014 4:09pm', status: 'Undone'},
+            {content: 'Lorem Ipsum', date: 'May 18 2014 4:09pm', status: 'Undone'},
+            {content: 'Dolor sit amett', date: 'May 18 2014 4:09pm', status: 'Undone'},
+            {content: 'Parsque consequteur', date: 'May 18 2014 4:09pm', status: 'Undone'},
+            {content: 'Lorem Ipsum', date: 'May 18 2014 4:09pm', status: 'Undone'},
+            {content: 'Dolor sit amett', date: 'May 18 2014 4:09pm', status: 'Undone'},
+            {content: 'Parsque consequteur', date: 'May 18 2014 4:09pm', status: 'Undone'},
         ]);
         this.list.setContent(items);
 

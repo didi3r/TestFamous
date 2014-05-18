@@ -36,7 +36,9 @@ define(function(require, exports, module) {
 
     ListView.prototype.setContent = function(collection) {
         collection.each(function(object) {
-            var item = new this.ListItemView();
+            var item = new this.ListItemView({
+                height: 75
+            });
 
             var draggable = new Draggable({
                 xRange: [-150, 150],
