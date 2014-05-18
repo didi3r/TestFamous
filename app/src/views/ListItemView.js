@@ -5,46 +5,26 @@ define(function(require, exports, module) {
 
     function ListItemView(params) {
         View.apply(this, arguments);
-        var view = new View();
-        var listeners = [];
+        this._view = new View();
+        this._listeners = [];
 
-        this.params = params || {
+        this._params = params || {
             height: 70
         }
 
-        this.addToView = function(renderable) {
-            view.add(renderable);
-        }
-
-        this.getAllListeners = function() {
-            return listeners;
-        }
-
-        this.addListener = function(listener) {
-            listeners.push(listener);
-        }
-
-        this.getListener = function(index) {
-            return listeners[index];
-        }
-
-        this.getTotalListeners = function() {
-            return listeners.length;
-        }
-
-        this.add(view);
+        this.add(this._view);
     };
 
     ListItemView.prototype = Object.create(View.prototype);
     ListItemView.prototype.constructor = ListItemView;
 
     ListItemView.prototype.pipeTo = function(target) {
-        this.addListener(target);
+        this._listeners.push(target);
     }
 
     ListItemView.prototype.setContent = function(object) {
         var item = new Surface({
-            size: [APP_WIDTH - 30, this.params.height],
+            size: [APP_WIDTH - 30, this._params.height],
             content:
                 '<div class="view"> ' +
                     '<div class="delete">' +
@@ -60,11 +40,11 @@ define(function(require, exports, module) {
             classes: ['listview-item']
         });
 
-        for (var i = 0; i < this.getTotalListeners(); i++) {
-            item.pipe(this.getListener(i));
+        for (var i = 0; i < this._listeners.length; i++) {
+            item.pipe(this._listeners[i]);
         }
 
-        this.addToView(item);
+        this._view.add(item);
     }
 
     module.exports = ListItemView;
