@@ -50,11 +50,11 @@ define(function(require, exports, module) {
             opacity: 0.9
         })
 
-        this.header._add(this.background);
-        this.header._add(this.iconModifier).add(this.menuIcon);
-        this.header._add(this.titleModifier).add(this.title);
+        this.header.add(this.background);
+        this.header.add(this.iconModifier).add(this.menuIcon);
+        this.header.add(this.titleModifier).add(this.title);
 
-        this._add(this.sizeModifier).add(this.header);
+        this.add(this.sizeModifier).add(this.header);
 
     };
 

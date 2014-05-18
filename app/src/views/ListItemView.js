@@ -12,7 +12,7 @@ define(function(require, exports, module) {
             height: 50
         }
 
-        this._add(this.view);
+        this.add(this.view);
     };
 
     ListItemView.prototype = Object.create(View.prototype);
@@ -31,7 +31,7 @@ define(function(require, exports, module) {
                         '<i class="fa fa-times"></i>' +
                         '<span>Suelta Para Eliminar</span>' +
                     '</div>' +
-                    '<div class="content">Item ' + object.content + '</div>' +
+                    '<div class="content">' + object.content + '</div>' +
                     '<ul class="options">' +
                         '<li><i class="fa fa-heart"></i></li>' +
                         '<li><i class="fa fa-comment"></i></li>' +
@@ -44,7 +44,7 @@ define(function(require, exports, module) {
             this.item.pipe(this.listeners[i]);
         }
 
-        this.view._add(this.item);
+        this.view.add(this.item);
     }
 
     module.exports = ListItemView;

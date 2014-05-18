@@ -24,7 +24,7 @@ define(function(require, exports, module) {
         this.viewSequence = new ViewSequence(this.items);
         this.scrollView.sequenceFrom(this.viewSequence);
 
-        this._add(this.scrollView);
+        this.add(this.scrollView);
     };
 
     ListView.prototype = Object.create(View.prototype);

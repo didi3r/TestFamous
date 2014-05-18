@@ -54,7 +54,7 @@ define(function(require, exports, module) {
 
         this.menuView.add(this.nodeLayout);
 
-        this._add(this.sideViewModifier).add(this.menuView);
+        this.add(this.sideViewModifier).add(this.menuView);
     }
 
     SideView.prototype = Object.create(View.prototype);
