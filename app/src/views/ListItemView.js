@@ -10,17 +10,17 @@ define(function(require, exports, module) {
 
         this._params = params || {
             height: 70
-        }
+        };
 
         this.add(this._view);
-    };
+    }
 
     ListItemView.prototype = Object.create(View.prototype);
     ListItemView.prototype.constructor = ListItemView;
 
     ListItemView.prototype.pipeTo = function(target) {
         this._listeners.push(target);
-    }
+    };
 
     ListItemView.prototype.setContent = function(object) {
         var item = new Surface({
@@ -40,12 +40,11 @@ define(function(require, exports, module) {
             classes: ['listview-item']
         });
 
-        for (var i = 0; i < this._listeners.length; i++) {
+        for (var i = 0; i < this._listeners.length; i++)
             item.pipe(this._listeners[i]);
-        }
 
         this._view.add(item);
-    }
+    };
 
     module.exports = ListItemView;
 });

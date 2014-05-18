@@ -25,14 +25,14 @@ define(function(require, exports, module) {
         this.scrollView.sequenceFrom(this.viewSequence);
 
         this.add(this.scrollView);
-    };
+    }
 
     ListView.prototype = Object.create(View.prototype);
     ListView.prototype.constructor = ListView;
 
     ListView.prototype.setItemView = function (view) {
         this.ListItemView = view;
-    }
+    };
 
     ListView.prototype.setContent = function(collection) {
         collection.each(function(object) {
@@ -86,7 +86,7 @@ define(function(require, exports, module) {
         if(index != -1) {
             this.items.splice(index, 1);
         }
-    }
+    };
 
     module.exports = ListView;
 });
